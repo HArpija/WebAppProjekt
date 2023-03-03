@@ -4,39 +4,42 @@
 @inject NavigationManager navManager;
 
 
-<h3>Dodaj</h3>
+<p class="h1">Dodaj</p>
 
 <form @onsubmit="DodajOsobu">
+    <div class="mb-3">
+        <label for="fime" class="form-label">Ime</label>
+        <input class="form-control" id="fime" @bind-value="osoba.Ime" name="fime" type="text" placeholder="Upiši ime" />
+    </div>
+    <div class="mb-3">
+        <label for="fprezime" class="form-label">Prezime</label>
+        <input class="form-control" id="fprezime" @bind-value="osoba.Prezime" name="fprezime" type="text" placeholder="Upiši prezime" />
+    </div>
+    <div class="mb-3">
+        <label for="fbrtel" class="form-label">Broj telefona</label>
+        <input class="form-control" id="fbrtel" @bind-value="osoba.BrojTelefona" name="fbrtel" type="text" placeholder="Broj telefona" />
+    </div>
+    <div class="mb-3">
+        <label for="fbrmob" class="form-label">Broj mobitela</label>
+        <input class="form-control" id="fbrmob" @bind-value="osoba.BrojMobitela" name="fbrmob" type="text" placeholder="Broj mobitela" />
+    </div>
+    <div class="mb-3">
+        <label for="fadr" class="form-label">Adresa</label>
+        <input class="form-control" id="fadr" @bind-value="osoba.Adresa" name="fadr" type="text" placeholder="Adresa" />
+    </div>
+    <div class="mb-3">
+        <label for="fgrad" class="form-label">Grad</label>
+        <input class="form-control" id="fgrad" @bind-value="osoba.Grad" name="fgrad" type="text" placeholder="Grad" />
+    </div>
+    <div class="mb-3">
+        <label for="fdrz" class="form-label">Država</label>
+        <input class="form-control" id="fdrz" @bind-value="osoba.Drzava" name="fdrz" type="text" placeholder="Država" />
+    </div>
     <p>
-        <label for="fime">Ime</label>
-        <input id="fime" @bind-value="osoba.Ime" name="fime" type="text" placeholder="Upiši ime" />
-    </p>
-    <p>
-        <label for="fprezime">Prezime</label>
-        <input id="fprezime" @bind-value="osoba.Prezime" name="fprezime" type="text" placeholder="Upiši prezime" />
-    </p>
-    <p>
-        <label for="fbrtel">Broj telefona</label>
-        <input id="fbrtel" @bind-value="osoba.BrojTelefona" name="fbrtel" type="text" placeholder="Broj telefona" />
-    </p>
-    <p>
-        <label for="fbrmob">Broj mobitela</label>
-        <input id="fbrmob" @bind-value="osoba.BrojMobitela" name="fbrmob" type="text" placeholder="Broj mobitela" />
-    </p>
-    <p>
-        <label for="fadr">Adresa</label>
-        <input id="fadr" @bind-value="osoba.Adresa" name="fadr" type="text" placeholder="Adresa" />
-    </p>
-    <p>
-        <label for="fgrad">Grad</label>
-        <input id="fgrad" @bind-value="osoba.Grad" name="fgrad" type="text" placeholder="Grad" />
-    </p>
-    <p>
-        <label for="fdrz">Država</label>
-        <input id="fdrz" @bind-value="osoba.Drzava" name="fdrz" type="text" placeholder="Država" />
-    </p>
-    <p>
-        <button type="submit">Dodaj osobu</button>
+        <button class="btn btn-primary" type="submit">Dodaj osobu</button>
+
+        <button class ="btn btn-secondary" @onclick="Natrag">Natrag na listu</button>
+
     </p>
 
 </form>
@@ -52,5 +55,8 @@
             navManager.NavigateTo("/osobe");
         }
     }
-
+    public void Natrag()
+    {
+        navManager.NavigateTo("/osobe");
+    }
 }

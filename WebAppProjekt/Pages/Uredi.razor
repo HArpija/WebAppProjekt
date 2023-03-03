@@ -4,7 +4,7 @@
 @inject NavigationManager navManager;
 
 
-<h3>Uredi</h3>
+<p class="h1">Uredi</p>
 
 <form @onsubmit="UrediOsobu">
     <div class="mb-3">
@@ -36,7 +36,8 @@
         <input class="form-control" id="fdrz" @bind-value="osoba.Drzava" name="fdrz" type="text" placeholder="Država" />
     </div>
     <p>
-        <button class="btn btn-success" type="submit">Spremi promjene</button>
+        <button class="btn btn-primary" type="submit">Spremi promjene</button>
+        <button class="btn btn-secondary" @onclick="Natrag">Natrag na listu</button>
     </p>
 
 </form>
@@ -65,5 +66,9 @@
         {
             navManager.NavigateTo("/osobe");
         }
+    }
+    public void Natrag()
+    {
+        navManager.NavigateTo("/osobe");
     }
 }

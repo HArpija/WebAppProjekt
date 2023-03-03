@@ -3,20 +3,40 @@
 @inject HttpClient httpClient;
 @inject NavigationManager navManager;
 
-<h3>Detalji</h3>
-Dohvaćeni id: @Id
+<p class="h2">Detalji</p>
+<p class="h4">Dohvaćeni id: @Id</p>
 
-<div>
-    <p>Ime: @osoba.Ime</p>
-    <p>Prezime: @osoba.Prezime</p>
-    <p>Broj telefona: @osoba.BrojTelefona</p>
-    <p>Broj mobitela: @osoba.BrojMobitela</p>
-    <p>Adresa: @osoba.Adresa</p>
-    <p>Grad: @osoba.Grad</p>
-    <p>Država: @osoba.Drzava</p>
+<div class="mb-3">
+    <label for="fime" class="form-label">Ime</label>
+    <input class="form-control" id="fime" @bind-value="osoba.Ime" name="fime" type="text" placeholder=" @osoba.Ime" readonly/>
+</div>
+<div class="mb-3">
+    <label for="fprezime" class="form-label">Prezime</label>
+    <input class="form-control" id="fprezime" @bind-value="osoba.Prezime" name="fprezime" type="text" placeholder=" @osoba.Prezime" readonly />
+</div>
+<div class="mb-3">
+    <label for="fbrtel" class="form-label">Broj telefona</label>
+    <input class="form-control" id="fbrtel" @bind-value="osoba.BrojTelefona" name="fbrtel" type="text" placeholder=" @osoba.BrojTelefona" readonly />
+</div>
+<div class="mb-3">
+    <label for="fbrmob" class="form-label">Broj mobitela</label>
+    <input class="form-control" id="fbrmob" @bind-value="osoba.BrojMobitela" name="fbrmob" type="text" placeholder="@osoba.BrojMobitela" readonly />
+</div>
+<div class="mb-3">
+    <label for="fadr" class="form-label">Adresa</label>
+    <input class="form-control" id="fadr" @bind-value="osoba.Adresa" name="fadr" type="text" placeholder=" @osoba.Adresa" readonly />
+</div>
+<div class="mb-3">
+    <label for="fgrad" class="form-label">Grad</label>
+    <input class="form-control" id="fgrad" @bind-value="osoba.Grad" name="fgrad" type="text" placeholder=" @osoba.Grad" readonly />
+</div>
+<div class="mb-3">
+    <label for="fdrz" class="form-label">Država</label>
+    <input class="form-control" id="fdrz" @bind-value="osoba.Drzava" name="fdrz" type="text" placeholder=" @osoba.Drzava" readonly />
 </div>
 
-<button @onclick="Natrag">Natrag na listu</button>
+ 
+<button class="btn btn-secondary" @onclick="Natrag">Natrag na listu</button>
 
 @code {
     [Parameter]

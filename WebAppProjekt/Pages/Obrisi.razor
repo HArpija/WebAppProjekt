@@ -4,25 +4,47 @@
 @inject NavigationManager navManager;
 
 
- <h3>Obriši</h3>
+ <p class="h2">Obriši</p>
 @if (IsError == true)
 {
-    <p>Upppsss!Dogodila se neka greška,kontaktirajte administratora.</p>
+    <p class="h5">Upppsss!Dogodila se neka greška,kontaktirajte administratora.</p>
 }
 
-Dohvaćeni id: @Id
-<div>
-    <p>Ime: @osoba.Ime</p>
-    <p>Prezime: @osoba.Prezime</p>
-    <p>Broj telefona: @osoba.BrojTelefona</p>
-    <p>Broj mobitela: @osoba.BrojMobitela</p>
-    <p>Adresa: @osoba.Adresa</p>
-    <p>Grad: @osoba.Grad</p>
-    <p>Država: @osoba.Drzava</p>
-</div>
+<p class="h4">Dohvaćeni id: @Id</p>
 
-<button @onclick="Natrag">Natrag na listu</button>
-<button @onclick="Delete">Obriši</button>
+    <div class="mb-3">
+        <label for="fime" class="form-label">Ime</label>
+        <input class="form-control" id="fime" @bind-value="osoba.Ime" name="fime" type="text" placeholder=" @osoba.Ime" />
+    </div>
+    <div class="mb-3">
+        <label for="fprezime" class="form-label">Prezime</label>
+        <input class="form-control" id="fprezime" @bind-value="osoba.Prezime" name="fprezime" type="text" placeholder=" @osoba.Prezime" />
+    </div>
+    <div class="mb-3">
+        <label for="fbrtel" class="form-label">Broj telefona</label>
+        <input class="form-control" id="fbrtel" @bind-value="osoba.BrojTelefona" name="fbrtel" type="text" placeholder=" @osoba.BrojTelefona"/>
+    </div>
+    <div class="mb-3">
+        <label for="fbrmob" class="form-label">Broj mobitela</label>
+        <input class="form-control" id="fbrmob" @bind-value="osoba.BrojMobitela" name="fbrmob" type="text" placeholder="@osoba.BrojMobitela" />
+    </div>
+    <div class="mb-3">
+        <label for="fadr" class="form-label">Adresa</label>
+        <input class="form-control" id="fadr" @bind-value="osoba.Adresa" name="fadr" type="text" placeholder=" @osoba.Adresa" />
+    </div>
+    <div class="mb-3">
+        <label for="fgrad" class="form-label">Grad</label>
+        <input class="form-control" id="fgrad" @bind-value="osoba.Grad" name="fgrad" type="text" placeholder=" @osoba.Grad"  />
+    </div>
+    <div class="mb-3">
+        <label for="fdrz" class="form-label">Država</label>
+        <input class="form-control" id="fdrz" @bind-value="osoba.Drzava" name="fdrz" type="text" placeholder=" @osoba.Drzava"  />
+    </div>
+    
+
+<button class="btn btn-primary" @onclick="Delete">Obriši</button>
+<button class="btn btn-secondary" @onclick="Natrag">Natrag na listu</button>
+
 
 @code {
     [Parameter]
@@ -39,11 +61,7 @@ Dohvaćeni id: @Id
             osoba = await result.Content.ReadFromJsonAsync<Osoba>();
         }
     }
-    public void Natrag()
-    {
-        navManager.NavigateTo("/osobe");
-    }
-
+  
     public async Task Delete()
     {
         var result = await httpClient.DeleteAsync($"https://expertvjezbeapi.azurewebsites.net/api/Osobes/{Id}");
@@ -56,5 +74,9 @@ Dohvaćeni id: @Id
             IsError = true;
         }
 
+    }
+    public void Natrag()
+    {
+        navManager.NavigateTo("/osobe");
     }
 }
