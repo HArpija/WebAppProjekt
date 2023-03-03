@@ -12,17 +12,13 @@
 }
 
 .btn btn-primary {
-    background-color: #144170;
+    background-color: #0e356c !important;
 }
 
 .btn btn-secondary {
-    background-color: #888b8e;
+    background-color: #545c64 !important;
 }
 
-.btn btn-warning {
-    color: #fff;
-    background-color:#b69f51
-}
 .sidebar {
     background-image: linear-gradient(180deg, rgb(228 191 83) 0%, #062347 70%) !important;
 }
