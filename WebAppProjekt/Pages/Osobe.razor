@@ -3,16 +3,13 @@
 @inject HttpClient httpClient;
 @inject NavigationManager navManager;
 
-<h4>Osobe</h4>
+<p class="h2">Osobe</p>
 <div class="input-group">
     <input type="text" class="form-control" @bind-value="searchString" id="search" name="search" placeholder="pretraži..." aria-label="Recipient's username with two button addons">
-    <button class="btn btn-outline-secondary" @onclick="Pretrazi" type="button">Pretraži</button>
+    <button class="btn btn-outline-primary" @onclick="Pretrazi" type="button">Pretraži</button>
+    <button class="btn btn-outline-success " @onclick="Dodaj">Dodaj</button>
     <button class="btn btn-outline-secondary" @onclick="PrikaziSve" type="button">Prikaži sve</button>
 </div>
-
-<label for="search">Pretraži</label>
-<input type="text" @bind-value="searchString" id="search" name="search" placeholder="pretraži..."/>
-
 
 <table class="table table-hover">
    <thead>
@@ -20,7 +17,7 @@
          <th scope="col">Id</th>
           <th scope="col">Ime</th>
            <th scope="col">Prezime</th>
-            <th colspan="4">Detalji/Uredi/Dodaj/Obriši</th>
+            <th colspan="4">Detalji/Uredi/Obriši</th>
      </tr>
    </thead>
     @foreach(var item in osobe)
@@ -30,10 +27,9 @@
                 <td> @item.Id</td>
                   <td> @item.Ime</td>
                     <td> @item.Prezime</td>
-                     <td><button class="btn btn-secondary btn-sm" @onclick="()=>Detalji(item.Id)">Detalji</button></td>
-                     <td><button class="btn btn-warning btn-sm" @onclick="()=>Uredi(item.Id)">Uredi</button></td>
-                     <td><button class="btn btn-secondary btn-sm" @onclick="Dodaj">Dodaj</button></td>
-                     <td><button class="btn btn-warning btn-sm" @onclick="()=>Obrisi(item.Id)">Obriši</button></td>
+                     <td><button class="btn btn-outline-secondary btn-sm" @onclick="()=>Detalji(item.Id)">Detalji</button></td>
+                     <td><button class="btn btn-outline-primary btn-sm" @onclick="()=>Uredi(item.Id)">Uredi</button></td>
+                     <td><button class="btn btn-outline-danger btn-sm" @onclick="()=>Obrisi(item.Id)">Obriši</button></td>
             </tr>
         </tbody>
     }
