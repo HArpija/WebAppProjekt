@@ -2,10 +2,11 @@
 @using WebAppProjekt.Models;
 @inject HttpClient httpClient;
 @inject NavigationManager navManager;
+@inject IJSRuntime jsRun;  /*4.3.*/
 
 
  <p class="h2">Obriši</p>
-@if (IsError == true)
+@if (IsError == true) /* */
 {
     <p class="h5">Upppsss!Dogodila se neka greška,kontaktirajte administratora.</p>
 }
@@ -53,7 +54,7 @@
     public bool IsError = false;
 
     protected override async Task OnInitializedAsync()
-    {
+    {   
         var result = await httpClient.GetAsync($"https://expertvjezbeapi.azurewebsites.net/api/Osobes/{Id}");
 
         if (result.IsSuccessStatusCode)
@@ -61,19 +62,28 @@
             osoba = await result.Content.ReadFromJsonAsync<Osoba>();
         }
     }
-  
+
     public async Task Delete()
     {
-        var result = await httpClient.DeleteAsync($"https://expertvjezbeapi.azurewebsites.net/api/Osobes/{Id}");
-        if (result.IsSuccessStatusCode)
-        {
-            navManager.NavigateTo("/osobe");
-        }
-        else
-        {
-            IsError = true;
-        }
+        await jsRun.InvokeVoidAsync("alert", "Ja sam javascript alert!"); /*invokanje alerta*/
 
+        /*invokanje JS u C#*/
+        var confirm = await jsRun.InvokeAsync<bool>("confirm", "Jeste li sigurni da želite obrisati?");
+            var vaseIme = await jsRun.InvokeAsync<string>("prompt", "Upiši svoje ime");
+        
+        
+        if (confirm == true)  /*ak je odgovor-DA izvsava kod*/
+        {
+            var result = await httpClient.DeleteAsync($"https://expertvjezbeapi.azurewebsites.net/api/Osobes/{Id}");
+            if (result.IsSuccessStatusCode)
+            {
+                navManager.NavigateTo("/osobe");
+            }
+            else
+            {
+                IsError = true;
+            }
+        }
     }
     public void Natrag()
     {
