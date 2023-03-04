@@ -69,9 +69,7 @@
 
         /*invokanje JS u C#*/
         var confirm = await jsRun.InvokeAsync<bool>("confirm", "Jeste li sigurni da želite obrisati?");
-            var vaseIme = await jsRun.InvokeAsync<string>("prompt", "Upiši svoje ime");
-        
-        
+        var vaseIme = await jsRun.InvokeAsync<string>("prompt", "Upiši svoje ime");
         if (confirm == true)  /*ak je odgovor-DA izvsava kod*/
         {
             var result = await httpClient.DeleteAsync($"https://expertvjezbeapi.azurewebsites.net/api/Osobes/{Id}");
