@@ -11,11 +11,13 @@
     background-color: #dadce5;
 }
 
-.btn btn-primary {
+.btn-primary {
     background-color: #0e356c !important;
 }
-
-.btn btn-secondary {
+btn-sm {
+    background-color: #0e356c !important;
+}
+.btn-secondary {
     background-color: #545c64 !important;
 }
 
