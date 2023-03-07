@@ -71,11 +71,7 @@
     }
     public void Pretrazi()
     {
-        osobe = osobe.Where(x =>
-            x.Ime.ToLower().Contains(searchString.ToLower()) ||    
-            x.Prezime.ToLower().Contains(searchString.ToLower())          
-        )
-            .ToList();
+        osobe = osobe.Where(x =>x.Ime.ToLower().Contains(searchString.ToLower()) || x.Prezime.ToLower().Contains(searchString.ToLower())).ToList();
         StateHasChanged();
     }
     public async Task PrikaziSve()    
